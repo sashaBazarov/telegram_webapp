@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Маркетплейс</title>
+    <link rel="stylesheet" href="css/style.css" >
+</head>
+<body>
+    <header>
+        <h1>Мой Маркетплейс</h1>
+    </header>
+<nav>
+    <a href="/" class="nav-link" data-action="home">Главная</a>
+    <a href="/products.html" class="nav-link" data-action="products">Товары</a>
+    <a href="/cart.html" class="nav-link" data-action="cart">Корзина</a>
+
+</nav>
+
+<main class="container" id="cads-container"></main>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close-button" id="close-modal">&times;</span>
+        <h2>Создание товара</h2>
+        <form enctype="multipart/form-data" id="product-form">
+            <div class="form-group">
+                <label for="product-name">Название товара:</label>
+                <input type="text" id="product-name" name="product-name" required>
+            </div>
+            <div class="form-group">
+                <label for="product-price">Цена:</label>
+                <input type="number" id="product-price" name="product-price" required>
+            </div>
+            <div class="form-group">
+                <label for="product-description">Описание:</label>
+                <textarea id="product-description" name="product-description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="product-image">Изображение товара:</label>
+                <input type="file" id="product-image" name="product-image" accept="image/*" required>
+            </div>
+            <button type="submit">Создать</button>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="edit-modal">
+    <div class="modal-content">
+        <span class="close-button" id="close-edit-modal">&times;</span>
+        <h2>Редактирование товара</h2>
+        <form enctype="multipart/form-data" id="edit-product-form">
+            <div class="form-group">
+                <label for="edit-product-id">ID товара:</label>
+                <input type="text" id="edit-product-id" name="edit-product-id" readonly>
+            </div>
+            <div class="form-group">
+                <label for="edit-product-name">Название товара:</label>
+                <input type="text" id="edit-product-name" name="edit-product-name" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-product-price">Цена:</label>
+                <input type="number" id="edit-product-price" name="edit-product-price" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-product-description">Описание:</label>
+                <textarea id="edit-product-description" name="edit-product-description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="edit-product-image">Изображение товара:</label>
+                <input type="file" id="edit-product-image" name="edit-product-image" accept="image/*">
+            </div>
+            <button type="submit">Сохранить изменения</button>
+        </form>
+    </div>
+</div>
+
+<button class="fixed-button" id="open-modal">Добавить товар</button>
+</body>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="js/login.js"></script>
+<script src="js/products.js"></script>
+<script src="js/create_product.js"></script>
+</html>

@@ -1,0 +1,258 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ddd;
+}
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 10px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+nav a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+.container {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+.content {
+    overflow-y: auto; /* Включаем скроллинг */
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    padding: 15px;
+}
+.product-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.product-card p {
+    font-size: 14px;
+    color: #555;
+}
+.product-card button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.product-card button:hover {
+    background-color: #45a049;
+}
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Кнопка внизу */
+/* Кнопка, фиксированная внизу экрана */
+.fixed-button {
+    position: fixed; /* Фиксируем кнопку */
+    bottom: 0;       /* Располагаем у нижнего края экрана */
+    left: 0;         /* Выравниваем по левому краю */
+    width: 100%;     /* Растягиваем на всю ширину */
+    padding: 15px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    z-index: 1000;   /* Убедимся, что кнопка находится поверх всего */
+}
+
+.fixed-button:hover {
+    background-color: #4CAF50;
+}
+
+/* Модальное окно */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Поверх других элементов */
+}
+
+/* Центрируем модальное окно */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%; /* Для адаптивности */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+
+/* Стили для формы */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Стили для полей ввода */
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="file"],
+form textarea {
+    width: 100%; /* Поля ввода занимают всю ширину */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Поля ввода и текстовые области */
+form textarea {
+    resize: vertical; /* Разрешаем изменять высоту textarea */
+    min-height: 60px;
+}
+
+/* Кнопка отправки */
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Кнопка закрытия */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-button:hover {
+    color: red;
+}
+
+/* Кнопки внутри формы */
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.product-card-actions {
+    margin-top: 10px;
+}
+
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #4CAF50; /* Зеленый */
+    color: white;
+}
+
+.delete-button {
+    background-color: #f44336; /* Красный */
+    color: white;
+}
+
+
+.quantity-control {
+
+    gap: 5px; /* Расстояние между кнопками и текстом */
+    margin: 10px 0; /* Отступы сверху и снизу */
+}
+
+.quantity-control button {
+    width: 30px; /* Ширина кнопки */
+    height: 30px; /* Высота кнопки */
+    font-size: 18px; /* Размер текста внутри кнопки */
+    font-weight: bold; /* Жирный шрифт */
+    text-align: center; /* Центрирование текста */
+    line-height: 30px; /* Выравнивание текста по вертикали */
+    border-radius: 5px; /* Скругление углов */
+    background-color: transparent; /* Цвет фона */
+    cursor: pointer; /* Курсор указателя при наведении */
+    padding: 0; /* Убираем внутренние отступы */
+    transition: background-color 0.2s ease; /* Плавный переход цвета */
+    color: #333;
+}
+
+.quantity-control button:hover {
+    background-color: transparent; /* Цвет фона при наведении */
+}
+
+.quantity-control span {
+    font-size: 18px; /* Размер текста количества */
+    font-weight: bold; /* Жирный шрифт */
+    color: #333; /* Цвет текста */
+    min-width: 30px; /* Минимальная ширина для выравнивания */
+    text-align: center; /* Центрирование текста */
+}
