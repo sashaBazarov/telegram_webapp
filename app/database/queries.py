@@ -11,7 +11,7 @@ def find_user_by_id(user_id: int):
     return session.query(User).filter(User.id == user_id).first()
 
 
-def find_user_by_telegram_id(telegram_id: str):
+def find_user_by_telegram_id(telegram_id: int):
 
     return session.query(User).filter(User.telegram_id == telegram_id).first()
 
@@ -33,9 +33,12 @@ def find_users_products(user_id):
 
 
 def add_product(name: str, description: str, price: float, image: str, owner: int):
+    new_product = Product(owner, name, description, price, image)
 
-    session.add(Product(owner, name, description, price, image))
+    session.add(new_product)
     session.commit()
+
+    return new_product
 
 
 def find_product_by_id(product_id: int):
@@ -56,6 +59,7 @@ def update_product(product_id: int, name: str, description: str, price: float, i
 
 def remove_product(product_id):
 
+    session.query(CartItem).filter(CartItem.product_id == product_id).delete(synchronize_session='fetch')
     session.query(Product).filter(Product.id == product_id).delete()
     session.commit()
 
@@ -75,7 +79,7 @@ def find_cart_item(user_id: int, product_id: int):
 
 def add_to_cart(user_id: int, product_id: int, quantity: int = 1):
 
-    cart_item = find_cart_item(session, user_id, product_id)
+    cart_item = find_cart_item( user_id, product_id)
     if cart_item:
         cart_item.quantity += quantity
     else:
@@ -87,7 +91,7 @@ def add_to_cart(user_id: int, product_id: int, quantity: int = 1):
 
 def remove_from_cart(user_id: int, product_id: int):
 
-    cart_item = find_cart_item(session, user_id, product_id)
+    cart_item = find_cart_item( user_id, product_id)
     if cart_item:
         session.delete(cart_item)
         session.commit()
@@ -95,7 +99,7 @@ def remove_from_cart(user_id: int, product_id: int):
 
 def update_cart_item_quantity(user_id: int, product_id: int, quantity: int):
 
-    cart_item = find_cart_item(session, user_id, product_id)
+    cart_item = find_cart_item( user_id, product_id)
     if cart_item:
         cart_item.quantity = quantity
         session.commit()

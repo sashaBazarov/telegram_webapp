@@ -4,7 +4,7 @@ from typing import Dict
 
 class CartItem(BaseModel):
     id: int
-    quantity: str
+    quantity: int
 
 
 class CartOwner(BaseModel):

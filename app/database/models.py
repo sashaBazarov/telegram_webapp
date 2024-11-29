@@ -17,7 +17,7 @@ class User(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    telegram_id = Column(String, nullable=False, unique=True)
+    telegram_id = Column(Integer, nullable=False, unique=True)
 
     cart_items = relationship('CartItem', back_populates='user', cascade='all, delete-orphan')
 

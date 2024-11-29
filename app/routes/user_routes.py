@@ -4,13 +4,16 @@ from app.database import *
 from app.models import CreateUser
 
 
-@router.post("/users/")
+@router.post("/api/users/")
 async def create_user(userdata: CreateUser):
+    if find_user_by_telegram_id(userdata.telegram_id):
+        return {"message": "User alerdy created"}
+    
     add_user(userdata.telegram_id)
     return {"message": "User created sucsessfully"}
 
 
-@router.get("/users/{user_id}")
+@router.get("/api/users/")
 async def get_user_by_id(telegram_id):
     user = find_user_by_telegram_id(telegram_id)
 
@@ -20,7 +23,7 @@ async def get_user_by_id(telegram_id):
     return find_user_by_telegram_id(telegram_id).to_dict()
 
 
-@router.delete("/users/{user_id}")
+@router.delete("/api/users/")
 async def delete_user(userdata: CreateUser):
     user = find_user_by_telegram_id(userdata.telegram_id)
     if not user:
